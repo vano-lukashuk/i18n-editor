@@ -1,0 +1,58 @@
+{
+  "name": "i18n-editor",
+  "version": "1.0.0",
+  "description": "i18n editor",
+  "main": "src/main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "webpack --mode=development --config build/webpack.dev.js --progress",
+    "build": "webpack --config build/webpack.prod.js --env.F --mode=production --progress --hide-modules",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vano-lukashuk/i18n-editor.git"
+  },
+  "author": "vano-lukashuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vano-lukashuk/i18n-editor/issues"
+  },
+  "homepage": "https://github.com/vano-lukashuk/i18n-editor#readme",
+  "build": {
+    "appId": "vano.lukashuk.ru.i18n.editor",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "electron": "^10.1.3",
+    "electron-builder": "^22.8.1",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^0.12.0",
+    "sass-loader": "^10.0.2",
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.6",
+    "vuex": "^3.5.1",
+    "vue-loader": "^15.9.3",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.2.0"
+  }
+}
