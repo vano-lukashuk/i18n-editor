@@ -8,7 +8,7 @@ function createWindow(){
     width: 1200,
     height: 600,
     center: true,
-    title: 'Поиск текста в файле. Курсовая Гаврилов Р.С.',
+    title: 'i18n editor',
     // icon: 'app/mainicon.png',
     webPreferences: {
       nodeIntegration: true
