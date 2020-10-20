@@ -6,6 +6,7 @@ module.exports = (env, argv) => {
   return merge(common(env, argv), {
     mode: 'development',
     watch: true,
+    devtool: 'source-map',
     watchOptions: {
       ignored: /node_modules/
     },
