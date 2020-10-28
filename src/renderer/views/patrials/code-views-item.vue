@@ -1,5 +1,6 @@
 <template>
   <div>
+    <hr>
     <p v-text="fileName"></p>
     <p>Indexes: <span v-text="payload"></span></p>
     <codemirror
