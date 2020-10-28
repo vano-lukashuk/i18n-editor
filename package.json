@@ -35,7 +35,9 @@
       ]
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "splitpanes": "^2.3.4"
+  },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
     "electron": "^10.1.3",
