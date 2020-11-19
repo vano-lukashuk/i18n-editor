@@ -50,9 +50,9 @@ module.exports = (env, argv) => {
               img: 'src',
               image: 'xlink:href'
             },
-            loaders: {
+            /*loaders: {
               scss: 'vue-style-loader!css-loader!sass-loader', // <style lang="scss">
-            }
+            }*/
           }
         },
         {
@@ -99,6 +99,14 @@ module.exports = (env, argv) => {
             }
           ]
         },
+        {
+          test: /\.(woff2?|eot|ttf|otf)$/,
+          loader: 'file-loader',
+          options: {
+            limit: 10000,
+            name: '[name].[hash:7].[ext]'
+          }
+        }
       ]
     },
     plugins: [

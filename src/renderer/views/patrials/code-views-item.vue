@@ -19,6 +19,7 @@ import 'codemirror/theme/material-darker.css'
 
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/vue/vue'
+import 'codemirror/addon/search/match-highlighter'
 
 export default {
   name: "code-views-item",
@@ -42,7 +43,8 @@ export default {
         theme: 'material-darker',
         lineNumbers: true,
         line: true,
-        readOnly: true
+        readOnly: true,
+        lineWrapping: true
         // more CodeMirror options...
       }
     }

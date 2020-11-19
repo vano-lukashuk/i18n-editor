@@ -5,33 +5,33 @@
       <b><span v-text="selectedKey"></span></b>
       <hr>
     </div>
-    <div v-for="lang in langs">
+    <div v-for="lang in languages">
       <label class="lang">
         <span class="lang-name" v-text="lang"></span>
-        <input class="lang-translate" v-model.lazy="data[selectedKey][lang]">
+        <input
+          class="lang-translate"
+          :value="languagesData[lang] && languagesData[lang][selectedKey]"
+          @change="Change($event.target.value, selectedKey, lang)"
+        >
       </label>
     </div>
   </div>
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
   export default {
     name: "lang-form",
-    data: () => ({
-      data: {}
-    }),
     computed: {
-      ...mapGetters({
-        selectedKey: 'files/selectedKey',
-        langs: 'files/langs'
-      })
+      ...mapGetters('files', ['selectedKey', 'languages', 'languagesData']),
     },
-    watch: {
-      selectedKey() {
-        this.data[this.selectedKey] = this.data[this.selectedKey] || {}
-      }
+    methods: {
+      ...mapActions('files', ['changedLanguagesData']),
+      Change(value, key, lang) {
+        console.log({value, key, lang})
+        this.changedLanguagesData({value, key, lang})
+      },
     }
   }
 </script>

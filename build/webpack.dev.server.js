@@ -9,6 +9,6 @@ module.exports = async (env, argv) => {
     hotOnly: true,
     port: port,
     host: 'localhost',
-    https: true
+    https: true,
   }
 }

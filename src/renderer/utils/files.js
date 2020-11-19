@@ -2,10 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import {flattenObject, unflattenObject} from './object'
 
-const patternFiles = /\.(js|vue)$/;
-const patternKey = /\$t\(((?:"[^"]*")|(?:`[^`]*`)|(?:'[^']*'))/igm;
-let dir = path.resolve('D:/GIT/iceuk.backend.ui/src')
-
 export const getFiles = (dir, pattern, calback) => {
   let files = fs.readdirSync(dir);
   for (let i in files) {
@@ -45,7 +41,7 @@ export const findPattern = (str, pattern) => {
   return res;
 }
 
-export const loadLangs = (dir) => {
+export const loadLanguages = (dir) => {
   let res = {};
   let files = fs.readdirSync(dir);
   for (let i in files) {
@@ -63,8 +59,7 @@ export const loadLangs = (dir) => {
   return res;
 }
 
-export const saveLangs = (dir, data) => {
-  let files = fs.readdirSync(dir);
+export const saveLanguages = (dir, data) => {
   for (let i in data) {
     try {
       fs.writeFileSync(path.resolve(dir, i + '.json'), JSON.stringify(data[i]));
@@ -74,7 +69,7 @@ export const saveLangs = (dir, data) => {
   }
 }
 
-export default () => {
+export default (dir, patternFiles, patternKey) => {
   let files = []
   getFiles(dir, patternFiles, (file) => {
     files.push(file);

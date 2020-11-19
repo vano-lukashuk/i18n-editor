@@ -1,6 +1,6 @@
 "use strict";
 import updateElectronApp from 'update-electron-app'
-import {app, BrowserWindow, protocol, ipcMain} from 'electron'
+import {app, BrowserWindow, protocol, ipcMain, dialog} from 'electron'
 import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -21,10 +21,24 @@ function createWindow() {
   });
 
   // console.log(process.env);
-  window.loadURL(`http://${process.env.Host || 'localhost'}:${process.env.PORT  || '8080'}/`);
+  window.loadURL(`http://${process.env.Host || 'localhost'}:${process.env.PORT || '8080'}/`);
   // window.loadURL('https://github.com/');
   window.webContents.openDevTools()
 
+  ipcMain.on('SaveFile', (event) => {
+    let res = dialog.showSaveDialogSync(window, {properties: ['createDirectory']})
+    event.returnValue = res;
+  })
+
+  ipcMain.on('OpenFile', (event) => {
+    let res = dialog.showOpenDialogSync(window, {properties: ['openFile']})
+    event.returnValue = res && res[0];
+  })
+
+  ipcMain.on('OpenDirectory', (event) => {
+    let res = dialog.showOpenDialogSync(window, {properties: ['openDirectory']})
+    event.returnValue = res && res[0];
+  })
 }
 
 app.on('ready', async () => {

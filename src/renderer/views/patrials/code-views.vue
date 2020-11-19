@@ -19,13 +19,11 @@
     components: {CodeViewsItem},
     data: () => ({}),
     computed: {
-      ...mapGetters({
-        selectedKey: 'files/selectedKey',
-        langKeys: 'files/keys',
-      }),
+      ...mapGetters('files', ['selectedKey','keys']),
       files() {
-        if (!this.selectedKey) return null
-        return this.langKeys[this.selectedKey].value
+        if (!this.selectedKey)
+          return null
+        return this.keys[this.selectedKey].value
       }
     },
   }
